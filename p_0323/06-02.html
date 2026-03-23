@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Style 적용 과제</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button :style="style1" @mouseover="overEvent" @mouseout="outEvent">
+        테스트
+      </button>
+    </div>
+
+    <script>
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            style1: {
+              backgroundColor: 'aqua',
+              color: 'black',
+            },
+          };
+        },
+        methods: {
+          // 마우스가 올라갔을 때 실행될 함수
+          overEvent() {
+            this.style1.backgroundColor = 'purple';
+            this.style1.color = 'yellow';
+          },
+          // 마우스가 빠져나갔을 때 실행될 함수 (원래대로 복구)
+          outEvent() {
+            this.style1.backgroundColor = 'aqua';
+            this.style1.color = 'black';
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
